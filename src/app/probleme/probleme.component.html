@@ -1,17 +1,41 @@
+<br/>
 <div class="container">
 <div class="card">
   <h5 class="card-header text-white bg-secondary mb-3">Déclarer un problème</h5>
   <div class="card-body">
     <h5 class="card-title">Veuillez renseigner les zones suivante et soumettre votre demande</h5>
-    <!-- <form>
+    <form class="form-horizontal"
+    novalidate
+    (ngSubmit)="save()"
+    [formGroup]="problemeForm">
       <div class="form-group row">
-        <label for="inputPrenom" class="col-sm-2 col-form-label">Prenom</label>
-        <div class="col-sm-10">
-          <input type="prenom" class="form-control" id="inputPrenom" placeholder="Votre prénom ici(obligatoire)">
+        <label for="prenomProblemeId" class="col-sm-2 col-form-label text-right">Prenom:</label>
+        <div class="col-md-10">
+          <input type="text" 
+          class="form-control" 
+          id="prenomProblemeId" 
+          placeholder="Votre prénom ici (obligatoire)" 
+          formControlName="prenomProbleme"
+          [ngClass]="{'is-invalid': (problemeForm.get('prenomProbleme').touched ||
+          problemeForm.get('prenomProbleme').dirty) &&
+          !problemeForm.get('prenomProbleme').valid,
+          'is-valid': (problemeForm.get('prenomProbleme').touched ||
+          problemeForm.get('prenomProbleme').dirty) &&
+          problemeForm.get('prenomProbleme').valid }"
+          />
+            <span class ="form-text" *ngIf="(problemeForm.get('prenomProbleme').touched ||
+              problemeForm.get('prenomProbleme').dirty) &&
+              problemeForm.get('prenomProbleme').errors">       
+                <span *ngIf="problemeForm.get('prenomProbleme').errors.minlength">
+                  <small class="text-muted">
+                    Indiquer au moins 3 caractères.
+                 </small>
+                </span>
+            </span>
         </div>
       </div>
-    </form> -->
-    <a href="#" class="btn btn-primary"><fa name="save" animation=""></fa>Sauvegarder</a>
+    </form>
+    <a href="#" class="btn btn-primary"><fa name="save"></fa>Sauvegarder</a>
   </div>
 </div>
 </div>
