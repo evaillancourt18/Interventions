@@ -21,13 +21,13 @@ describe('sansEspaces Validator', () => {
     let control = { value: "une phrase avec des mots"};
     let validator = VerifierCaracteresValidator.sansEspaces();
     let result = validator(control as AbstractControl);
-    expect(result['sansEspaces']).toBe(false);
+    expect(result['sansEspaces']).toBe(true);
  });
 
  it('une phrase avec 3 espaces, des mots et ensuite 3 espaces est valide', () => {
     let control = { value: "   une phrase avec des mots   "};
     let validator = VerifierCaracteresValidator.sansEspaces();
     let result = validator(control as AbstractControl);
-    expect(result['sansEspaces']).toBe(false);
+    expect(result['sansEspaces']).toBe(true);
  });
 });
