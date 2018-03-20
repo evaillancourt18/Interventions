@@ -11,4 +11,7 @@ static sansEspaces(): ValidatorFn{
     };
 }
 
+static longueurMinimum(): ValidatorFn{
+}
+
 }
