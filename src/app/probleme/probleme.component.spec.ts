@@ -35,7 +35,7 @@ describe('ProblemeComponent', () => {
   it('Zone PRÉNOM valide avec 3 caractères', () => {
     let zone = component.problemeForm.controls['prenomProbleme'];
     zone.setValue('a'.repeat(3));
-    expect(zone.valid).toBe(true);
+    expect(zone['longueurMinimum']).toBeTruthy();
   });
 
 
@@ -51,7 +51,7 @@ describe('ProblemeComponent', () => {
     let zone = component.problemeForm.get('prenomProbleme');
     zone.setValue('');
     errors = zone.errors || {};
-    expect(errors['required']).toBeTruthy();
+    expect(errors['required']).toBe(true);
   });
 
   it('Zone PRÉNOM invalide avec 1 caractère', () => {
@@ -59,7 +59,7 @@ describe('ProblemeComponent', () => {
     let zone = component.problemeForm.get('prenomProbleme');
     zone.setValue('a');
     errors = zone.errors || {};
-    expect(errors['minlength']).toBeTruthy();
+    expect(errors['minlength']).toBe(true);
   });
 
   it('Zone PRÉNOM valide avec 50 espaces', () => {
