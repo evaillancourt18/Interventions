@@ -11,7 +11,14 @@ static sansEspaces(): ValidatorFn{
     };
 }
 
-static longueurMinimum(): ValidatorFn{
+static longueurMinimum(min: number): ValidatorFn{
+    return (c: AbstractControl): { [key: string]: boolean } | null => {
+        if(c.value.trim().length>=min){
+            return {'longueurMinimum': true};
+        }else{
+        return {'longueurMinimum': false};
+        }
+    };
 }
 
 }
