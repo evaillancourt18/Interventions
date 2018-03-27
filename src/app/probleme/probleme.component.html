@@ -18,8 +18,9 @@
           formControlName="prenomProbleme"
           [ngClass]="{'is-invalid': (problemeForm.get('prenomProbleme').touched ||
           problemeForm.get('prenomProbleme').dirty) &&
-          problemeForm.get('prenomProbleme').errors.sansEspaces &&
-          problemeForm.get('prenomProbleme').errors.longueurMinimum,
+          (!problemeForm.get('prenomProbleme').errors.sansEspaces ||
+          !problemeForm.get('prenomProbleme').errors.longueurMinimum)
+           ,
           'is-valid': (problemeForm.get('prenomProbleme').touched ||
           problemeForm.get('prenomProbleme').dirty) &&
           problemeForm.get('prenomProbleme').errors.sansEspaces &&
@@ -32,12 +33,14 @@
                   <small class="text-muted">
                     Merci de saisir votre prénom, Veuillez entrer plus de caractères.
                  </small>
-                </span>
+               
+              </span>
+              
                 <span *ngIf="!problemeForm.get('prenomProbleme').errors.longueurMinimum">
                   <small class="text-muted">
                     Veuillez entrer plus de caractères.
                  </small>
-                </span>
+                </span>  
             </span>
         </div>
       </div>
