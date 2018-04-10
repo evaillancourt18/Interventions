@@ -64,7 +64,7 @@ export class ProblemeComponent implements OnInit {
 
     }else if(typeNotification ==='MeNotifierTelephone'){
       telephoneProblemeControl.enable();
-      telephoneProblemeControl.setValidators([Validators.required]);
+      telephoneProblemeControl.setValidators([Validators.required,Validators.pattern('[0-9]+'),Validators.maxLength(10),Validators.minLength(10)]);
     }
 
     courrielProblemeControl.updateValueAndValidity();
