@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { VerifierCaracteresValidator } from '../shared/caracteres-validator';
 import { TypeService } from './type.service';
 import { IType } from './type';
+import { emailMatcherValidator } from '../shared/emailMatcher-validator';
 
 @Component({
   selector: 'inter-probleme',
@@ -41,6 +42,7 @@ export class ProblemeComponent implements OnInit {
     const courrielProblemeControl = this.problemeForm.get('courrielGroup.courriel');
     const validerCourrielProblemeControl = this.problemeForm.get('courrielGroup.validerCourriel');
     const telephoneProblemeControl = this.problemeForm.get('telephone');
+    const courrielGroupProblemeControl = this.problemeForm.get('courrielGroup');
 
     courrielProblemeControl.clearValidators();
     courrielProblemeControl.reset();
@@ -54,9 +56,11 @@ export class ProblemeComponent implements OnInit {
 
     if(typeNotification === 'MeNotifierCourriel'){
       courrielProblemeControl.enable();
-      courrielProblemeControl.setValidators([Validators.required]);
+      courrielProblemeControl.setValidators([Validators.required,Validators.email]);
       validerCourrielProblemeControl.enable();
-      validerCourrielProblemeControl.setValidators([Validators.required]);
+      validerCourrielProblemeControl.setValidators([Validators.required,Validators.email]);
+      courrielGroupProblemeControl.setValidators([emailMatcherValidator.courrielConfirmation()]);
+
     }else if(typeNotification ==='MeNotifierTelephone'){
       telephoneProblemeControl.enable();
       telephoneProblemeControl.setValidators([Validators.required]);
@@ -65,6 +69,7 @@ export class ProblemeComponent implements OnInit {
     courrielProblemeControl.updateValueAndValidity();
     telephoneProblemeControl.updateValueAndValidity();
     validerCourrielProblemeControl.updateValueAndValidity();
+    courrielGroupProblemeControl.updateValueAndValidity();
   }
 
 }
