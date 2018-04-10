@@ -85,7 +85,15 @@
         <div class="col-sm-10">
           <select class="form-control"
           id="noTypeId"
-          formControlName="noType">
+          formControlName="noType"
+          [ngClass]="{'is-invalid': (problemeForm.get('noType').touched ||
+          problemeForm.get('noType').dirty) &&
+          problemeForm.get('noType').errors
+           ,
+          'is-valid': (problemeForm.get('noType').touched ||
+          problemeForm.get('noType').dirty) &&
+          !problemeForm.get('noType').errors }"
+          >
               <option value="">Sélectionner un type de problème (obligatoire)</option>
               <option *ngFor="let typ of typesProblemes" [value]="typ.id">{{typ.descriptionType}}</option>
         </select>
