@@ -20,6 +20,7 @@ export class ProblemeComponent implements OnInit {
   ngOnInit() {
     this.problemeForm = this.fb.group({
       prenomProbleme: ['',[VerifierCaracteresValidator.sansEspaces(),VerifierCaracteresValidator.longueurMinimum(3)]],
+      nomProbleme: ['',[VerifierCaracteresValidator.sansEspaces(),VerifierCaracteresValidator.longueurMinimum(3)]],
       noType: ['',Validators.required]
     });
 

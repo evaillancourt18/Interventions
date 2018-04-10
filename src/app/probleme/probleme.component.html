@@ -31,12 +31,48 @@
               problemeForm.get('prenomProbleme').errors">       
                 <span *ngIf="!problemeForm.get('prenomProbleme').errors.sansEspaces">
                   <small class="text-muted">
-                    Merci de saisir votre prénom, Veuillez entrer plus de caractères.
+                    Merci de saisir votre prénom.
                  </small>
                
               </span>
               
                 <span *ngIf="!problemeForm.get('prenomProbleme').errors.longueurMinimum">
+                  <small class="text-muted">
+                    Veuillez entrer plus de caractères.
+                 </small>
+                </span>  
+            </span>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="nomProblemeId" class="col-sm-2 col-form-label text-right">Nom:</label>
+        <div class="col-md-10">
+          <input type="text" 
+          class="form-control" 
+          id="nomProblemeId" 
+          placeholder="Votre nom ici (obligatoire)" 
+          formControlName="nomProbleme"
+          [ngClass]="{'is-invalid': (problemeForm.get('nomProbleme').touched ||
+          problemeForm.get('nomProbleme').dirty) &&
+          (!problemeForm.get('nomProbleme').errors.sansEspaces ||
+          !problemeForm.get('nomProbleme').errors.longueurMinimum)
+           ,
+          'is-valid': (problemeForm.get('nomProbleme').touched ||
+          problemeForm.get('nomProbleme').dirty) &&
+          problemeForm.get('nomProbleme').errors.sansEspaces &&
+          problemeForm.get('nomProbleme').errors.longueurMinimum}"
+          />
+            <span class ="form-text" *ngIf="(problemeForm.get('nomProbleme').touched ||
+              problemeForm.get('nomProbleme').dirty) &&
+              problemeForm.get('nomProbleme').errors">       
+                <span *ngIf="!problemeForm.get('nomProbleme').errors.sansEspaces">
+                  <small class="text-muted">
+                    Merci de saisir votre nom.
+                 </small>
+               
+              </span>
+              
+                <span *ngIf="!problemeForm.get('nomProbleme').errors.longueurMinimum">
                   <small class="text-muted">
                     Veuillez entrer plus de caractères.
                  </small>
