@@ -53,6 +53,7 @@ export class ProblemeComponent implements OnInit {
     telephoneProblemeControl.clearValidators();
     telephoneProblemeControl.reset();
     telephoneProblemeControl.disable();
+    courrielGroupProblemeControl.clearValidators();
 
     if(typeNotification === 'MeNotifierCourriel'){
       courrielProblemeControl.enable();
