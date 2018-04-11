@@ -36,6 +36,8 @@ export class ProblemeComponent implements OnInit {
     this.types.obtenirTypes()
     .subscribe(typ=> this.typesProblemes = typ,
     error => this.errorMessage = <any> error);
+
+    this.problemeForm.get('notification').valueChanges.subscribe(value=>this.appliquerNotifications(value));
   }
 
   appliquerNotifications(typeNotification: string): void {
