@@ -228,28 +228,28 @@
           formControlName="validerCourriel"
           [ngClass]="{'is-invalid': (problemeForm.get('courrielGroup.validerCourriel').touched ||
           problemeForm.get('courrielGroup.validerCourriel').dirty) &&
-          problemeForm.get('courrielGroup.validerCourriel').errors
+          !problemeForm.get('courrielGroup.validerCourriel').valid || problemeForm.get('courrielGroup').errors?.courrielConfirmation
            ,
           'is-valid': (problemeForm.get('courrielGroup.validerCourriel').touched ||
           problemeForm.get('courrielGroup.validerCourriel').dirty) &&
-          !problemeForm.get('courrielGroup.validerCourriel').errors }"
+          problemeForm.get('courrielGroup.validerCourriel').valid }"
           />
           <span class ="form-text" *ngIf="(problemeForm.get('courrielGroup.validerCourriel').touched ||
           problemeForm.get('courrielGroup.validerCourriel').dirty) &&
-          problemeForm.get('courrielGroup.validerCourriel').errors">       
-            <span *ngIf="problemeForm.get('courrielGroup.validerCourriel').errors.email">
+          problemeForm.get('courrielGroup.validerCourriel').errors || problemeForm.get('courrielGroup').errors">       
+            <span *ngIf="problemeForm.get('courrielGroup.validerCourriel').errors?.email">
               <small class="text-muted">
                 Veuillez entrez un courriel format aaa@bbb.ccc.
              </small>         
           </span>             
 
-            <span *ngIf="problemeForm.get('courrielGroup.validerCourriel').errors.required">
+            <span *ngIf="problemeForm.get('courrielGroup.validerCourriel').errors?.required">
               <small class="text-muted">
                 Veuillez entrez un courriel.
              </small>
             </span>
 
-            <span *ngIf="problemeForm.get('courrielGroup.validerCourriel').errors?.courrielConfirmation">
+            <span *ngIf="problemeForm.get('courrielGroup').errors?.courrielConfirmation">
               <small class="text-muted">
                 Veuillez entrez le même courriel.
              </small>

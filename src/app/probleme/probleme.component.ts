@@ -62,7 +62,7 @@ export class ProblemeComponent implements OnInit {
       courrielProblemeControl.setValidators([Validators.required,Validators.email]);
       validerCourrielProblemeControl.enable();
       validerCourrielProblemeControl.setValidators([Validators.required,Validators.email]);
-      courrielGroupProblemeControl.setValidators([emailMatcherValidator.courrielConfirmation()]);
+      courrielGroupProblemeControl.setValidators([Validators.compose([emailMatcherValidator.courrielConfirmation()])]);
 
     }else if(typeNotification ==='MeNotifierTelephone'){
       telephoneProblemeControl.enable();
