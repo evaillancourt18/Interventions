@@ -6,7 +6,7 @@ static sansEspaces(): ValidatorFn{
         if(c.value.trim().length==0){
             return {'sansEspaces': false};
         }else{
-        return {'sansEspaces': true};
+        return null;
         }
     };
 }
@@ -14,7 +14,7 @@ static sansEspaces(): ValidatorFn{
 static longueurMinimum(min: number): ValidatorFn{
     return (c: AbstractControl): { [key: string]: boolean } | null => {
         if(c.value.trim().length>=min){
-            return {'longueurMinimum': true};
+            return null;
         }else{
         return {'longueurMinimum': false};
         }

@@ -43,7 +43,7 @@ describe('ProblemeComponent', () => {
     let zone = component.problemeForm.get('prenomProbleme');
     zone.setValue('a'.repeat(3));
     errors = zone.errors || {};
-    expect(errors['longueurMinimum']).toBe(true);
+    expect(errors['longueurMinimum']).toBeUndefined();
   });
 
 
@@ -53,7 +53,7 @@ describe('ProblemeComponent', () => {
     let zone = component.problemeForm.get('prenomProbleme');
     zone.setValue('a'.repeat(200));
     errors = zone.errors || {};
-    expect(errors['longueurMinimum']).toBe(true);
+    expect(errors['longueurMinimum']).toBeUndefined();
   });
 
   it('Zone PRÉNOM invalide avec aucune valeur', () => {

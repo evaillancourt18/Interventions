@@ -28,7 +28,11 @@ export class ProblemeComponent implements OnInit {
         courrielGroup: this.fb.group({
           courriel: [{value: '', disabled:true}],
           validerCourriel: [{value: '', disabled:true}],
-        })
+        }),
+        descriptionProbleme: ['', [Validators.required, Validators.minLength(5)]],
+        noUnite: '',
+        dateProbleme: {value: Date(), disabled: true} 
+
       
 
     });
